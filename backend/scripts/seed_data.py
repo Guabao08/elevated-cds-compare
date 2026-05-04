@@ -15,6 +15,7 @@ load_dotenv()
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.dialects.postgresql import insert as pg_insert
 from app.models import Base, School
 
 DATABASE_URL = os.environ["DATABASE_URL"]
@@ -188,7 +189,13 @@ def run():
             existing_ids.add(sid)
 
         if batch:
-            db.bulk_save_objects(batch)
+            rows = [{
+                c.key: getattr(s, c.key)
+                for c in School.__table__.columns
+                if c.key != "id"
+            } for s in batch]
+            stmt = pg_insert(School).values(rows).on_conflict_do_nothing(index_elements=["scorecard_id"])
+            db.execute(stmt)
             db.commit()
             total_inserted += len(batch)
 
