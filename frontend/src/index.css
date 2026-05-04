@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cream font-sans text-gray-900 antialiased;
+  }
+
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-orange text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-orange-dark transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-700 font-medium px-5 py-2.5 rounded-lg hover:border-green-900 hover:text-green-900 transition-colors duration-150;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-green-900 font-medium px-4 py-2 rounded-lg hover:bg-green-50 transition-colors duration-150;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-gray-100;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-card-hover transition-shadow duration-200 cursor-pointer;
+  }
+
+  .input {
+    @apply w-full border border-gray-200 rounded-lg px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-transparent placeholder-gray-400 bg-white;
+  }
+
+  .select {
+    @apply input appearance-none cursor-pointer;
+  }
+
+  .badge {
+    @apply inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full;
+  }
+
+  .badge-green {
+    @apply badge bg-green-100 text-green-900;
+  }
+
+  .badge-orange {
+    @apply badge bg-orange-pale text-orange-dark;
+  }
+
+  .badge-gray {
+    @apply badge bg-gray-100 text-gray-600;
+  }
+
+  .stat-label {
+    @apply text-xs font-medium text-gray-500 uppercase tracking-wider;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-gray-900;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-green-900;
+  }
+
+  .page-header {
+    @apply bg-green-900 text-white;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Smooth transitions */
+a, button {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: 150ms;
+}
